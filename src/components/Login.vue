@@ -1,12 +1,16 @@
 <template>
   <div>
+    <h1>Vudo</h1>
     <div v-if="currentUser()">
       <p>Welcome, {{currentUser().username}}</p>
       <button @click="logout()" >Logout</button>
     </div>
     <form @submit="login($event)" v-if="!currentUser()">
-      <input type="text"/>
-      <input type="password"/>
+      <h2>Login / Register user</h2>
+      <label for="inpUsername">Username</label>
+      <input id="inpUsername" type="text"/>
+      <label for="inpPwd">Password</label>
+      <input id="inpPwd" type="password"/>
       <button>Login</button>
     </form>
   </div>

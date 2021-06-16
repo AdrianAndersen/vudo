@@ -5,8 +5,8 @@
       <label for="todoInput">Title</label>
       <input id="todoInput" type="text" />
       <button>Create TODO</button>
-      <button @click="$store.dispatch('addRandomTodo')">I'm feeling lucky (fetch api)</button>
     </form>
+    <button @click="$store.dispatch('addRandomTodo')">I'm feeling lucky (fetch api)</button>
     <h2>My todos</h2>
     <ol>
       <li :key="todo.id" v-for="todo in todos()">
