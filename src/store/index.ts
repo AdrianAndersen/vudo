@@ -23,9 +23,16 @@ export default new Vuex.Store({
     addTodo: (state, newTodo) => state.users.find(
       (user) => user.username === state.currentUser,
     )?.todos.push(newTodo),
-    completeTodo: (state, todoId) => state.users.find(
-      (user) => user.username === state.currentUser,
-    )?.todos.filter((todo) => todo.id !== todoId),
+    completeTodo: (state, todoId) => {
+      const currentUserIndex = state.users.findIndex(
+        (user) => user.username === state.currentUser,
+      );
+      if (currentUserIndex !== undefined) {
+        state.users[currentUserIndex].todos = state.users[currentUserIndex].todos.filter(
+          (todo) => todo.id !== todoId,
+        );
+      }
+    },
   },
   actions: {
     addRandomTodo: async (context) => {
